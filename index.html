@@ -1,1433 +1,1449 @@
 <!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Birthday Zoo Adventure</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <title>Birthday Zoo Adventure</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <style>
-      /* =====================================================
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* =====================================================
    RESET
 ===================================================== */
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      html {
-        scroll-behavior: smooth;
-      }
+    html {
+      scroll-behavior: smooth;
+    }
 
-      body {
-        font-family: "Baloo 2", sans-serif;
-        background: #fff8df;
-        color: #51432e;
-        overflow-x: hidden;
-      }
+    body {
+      font-family: "Baloo 2", sans-serif;
+      background: #fff8df;
+      color: #51432e;
+      overflow-x: hidden;
+    }
 
-      img {
-        display: block;
-        width: 100%;
-      }
+    img {
+      display: block;
+      width: 100%;
+    }
 
-      button,
-      a {
-        font-family: inherit;
-      }
+    button,
+    a {
+      font-family: inherit;
+    }
 
-      /* =====================================================
+    /* =====================================================
    GENERAL
 ===================================================== */
 
-      .container {
-        width: min(90%, 900px);
-        margin: auto;
-        position: relative;
-        z-index: 5;
-      }
+    .container {
+      width: min(90%, 900px);
+      margin: auto;
+      position: relative;
+      z-index: 5;
+    }
 
-      .section {
-        padding: 90px 20px;
-      }
+    .section {
+      padding: 90px 20px;
+    }
 
-      .section-title {
-        font-family: "Fredoka", sans-serif;
-        font-size: clamp(32px, 8vw, 55px);
-        color: #527b3c;
-        line-height: 1;
-        margin-bottom: 10px;
-      }
+    .section-title {
+      font-family: "Fredoka", sans-serif;
+      font-size: clamp(32px, 8vw, 55px);
+      color: #527b3c;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
 
-      .section-subtitle {
-        font-size: 18px;
-        color: #806d4c;
-      }
+    .section-subtitle {
+      font-size: 18px;
+      color: #806d4c;
+    }
 
-      /* =====================================================
+    /* =====================================================
    OPENING
 ===================================================== */
 
-      #opening {
-        min-height: 100vh;
-        position: relative;
-        overflow: hidden;
+    #opening {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-        text-align: center;
+      text-align: center;
 
-        background:
-          linear-gradient(rgba(204, 233, 167, 0.3), rgba(255, 248, 223, 0.2)),
-          #cce9a7;
+      background:
+        linear-gradient(rgba(204, 233, 167, 0.3), rgba(255, 248, 223, 0.2)),
+        #cce9a7;
+    }
+
+    .sun {
+      position: absolute;
+      top: 50px;
+      right: 40px;
+
+      width: 100px;
+      height: 100px;
+
+      background: #ffd45c;
+      border-radius: 50%;
+
+      box-shadow: 0 0 0 12px rgba(255, 212, 92, 0.15);
+    }
+
+    .cloud {
+      position: absolute;
+
+      width: 110px;
+      height: 35px;
+
+      background: white;
+      border-radius: 50px;
+
+      opacity: 0.8;
+    }
+
+    .cloud::before,
+    .cloud::after {
+      content: "";
+      position: absolute;
+
+      background: white;
+      border-radius: 50%;
+    }
+
+    .cloud::before {
+      width: 45px;
+      height: 45px;
+
+      left: 15px;
+      bottom: 0;
+    }
+
+    .cloud::after {
+      width: 55px;
+      height: 55px;
+
+      right: 12px;
+      bottom: 0;
+    }
+
+    .cloud-1 {
+      top: 100px;
+      left: -20px;
+    }
+
+    .cloud-2 {
+      top: 190px;
+      right: -20px;
+
+      transform: scale(0.7);
+    }
+
+    .opening-content {
+      position: relative;
+      z-index: 10;
+
+      padding: 30px 20px;
+    }
+
+    .small-text {
+      color: #55783d;
+
+      font-size: 18px;
+      font-weight: 800;
+
+      letter-spacing: 2px;
+    }
+
+    .opening-title {
+      font-family: "Fredoka", sans-serif;
+
+      font-size: clamp(48px, 14vw, 100px);
+
+      line-height: 0.85;
+
+      color: #4b7038;
+
+      text-shadow: 3px 4px 0 white;
+
+      margin: 15px 0;
+    }
+
+    .opening-title .number {
+      color: #ef9438;
+
+      display: inline-block;
+
+      transform: rotate(-6deg);
+    }
+
+    .main-animal {
+      font-size: clamp(90px, 25vw, 170px);
+
+      margin: 20px 0;
+
+      animation: floatAnimal 3s ease-in-out infinite;
+
+      filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.08));
+    }
+
+    @keyframes floatAnimal {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-2deg);
       }
 
-      .sun {
-        position: absolute;
-        top: 50px;
-        right: 40px;
-
-        width: 100px;
-        height: 100px;
-
-        background: #ffd45c;
-        border-radius: 50%;
-
-        box-shadow: 0 0 0 12px rgba(255, 212, 92, 0.15);
+      50% {
+        transform: translateY(-12px) rotate(2deg);
       }
+    }
 
-      .cloud {
-        position: absolute;
+    .opening-date {
+      font-size: 20px;
 
-        width: 110px;
-        height: 35px;
+      color: #725b37;
 
-        background: white;
-        border-radius: 50px;
+      margin-bottom: 25px;
+    }
 
-        opacity: 0.8;
-      }
+    .open-btn {
+      border: none;
 
-      .cloud::before,
-      .cloud::after {
-        content: "";
-        position: absolute;
+      background: #ef9139;
+      color: white;
 
-        background: white;
-        border-radius: 50%;
-      }
+      font-family: "Fredoka", sans-serif;
 
-      .cloud::before {
-        width: 45px;
-        height: 45px;
+      font-size: 20px;
 
-        left: 15px;
-        bottom: 0;
-      }
+      padding: 15px 35px;
 
-      .cloud::after {
-        width: 55px;
-        height: 55px;
+      border-radius: 50px;
 
-        right: 12px;
-        bottom: 0;
-      }
+      cursor: pointer;
 
-      .cloud-1 {
-        top: 100px;
-        left: -20px;
-      }
+      box-shadow: 0 7px 0 #c66c20;
 
-      .cloud-2 {
-        top: 190px;
-        right: -20px;
+      transition: 0.2s;
+    }
 
-        transform: scale(0.7);
-      }
+    .open-btn:hover {
+      transform: translateY(-3px);
 
-      .opening-content {
-        position: relative;
-        z-index: 10;
+      box-shadow: 0 10px 0 #c66c20;
+    }
 
-        padding: 30px 20px;
-      }
+    .open-btn:active {
+      transform: translateY(3px);
 
-      .small-text {
-        color: #55783d;
+      box-shadow: 0 3px 0 #c66c20;
+    }
 
-        font-size: 18px;
-        font-weight: 800;
-
-        letter-spacing: 2px;
-      }
-
-      .opening-title {
-        font-family: "Fredoka", sans-serif;
-
-        font-size: clamp(48px, 14vw, 100px);
-
-        line-height: 0.85;
-
-        color: #4b7038;
-
-        text-shadow: 3px 4px 0 white;
-
-        margin: 15px 0;
-      }
-
-      .opening-title .number {
-        color: #ef9438;
-
-        display: inline-block;
-
-        transform: rotate(-6deg);
-      }
-
-      .main-animal {
-        font-size: clamp(90px, 25vw, 170px);
-
-        margin: 20px 0;
-
-        animation: floatAnimal 3s ease-in-out infinite;
-
-        filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.08));
-      }
-
-      @keyframes floatAnimal {
-        0%,
-        100% {
-          transform: translateY(0) rotate(-2deg);
-        }
-
-        50% {
-          transform: translateY(-12px) rotate(2deg);
-        }
-      }
-
-      .opening-date {
-        font-size: 20px;
-
-        color: #725b37;
-
-        margin-bottom: 25px;
-      }
-
-      .open-btn {
-        border: none;
-
-        background: #ef9139;
-        color: white;
-
-        font-family: "Fredoka", sans-serif;
-
-        font-size: 20px;
-
-        padding: 15px 35px;
-
-        border-radius: 50px;
-
-        cursor: pointer;
-
-        box-shadow: 0 7px 0 #c66c20;
-
-        transition: 0.2s;
-      }
-
-      .open-btn:hover {
-        transform: translateY(-3px);
-
-        box-shadow: 0 10px 0 #c66c20;
-      }
-
-      .open-btn:active {
-        transform: translateY(3px);
-
-        box-shadow: 0 3px 0 #c66c20;
-      }
-
-      /* =====================================================
+    /* =====================================================
    GRASS
 ===================================================== */
 
-      .grass {
-        position: absolute;
+    .grass {
+      position: absolute;
 
-        bottom: -40px;
-        left: -5%;
+      bottom: -40px;
+      left: -5%;
 
-        width: 110%;
-        height: 150px;
+      width: 110%;
+      height: 150px;
 
-        background: #83b95b;
+      background: #83b95b;
 
-        border-radius: 50% 50% 0 0;
-      }
+      border-radius: 50% 50% 0 0;
+    }
 
-      /* =====================================================
+    /* =====================================================
    FLOATING ANIMALS
 ===================================================== */
 
-      .floating {
-        position: absolute;
+    .floating {
+      position: absolute;
 
-        font-size: 50px;
+      font-size: 50px;
 
-        z-index: 2;
+      z-index: 2;
 
-        animation: floating 4s ease-in-out infinite;
+      animation: floating 4s ease-in-out infinite;
+    }
+
+    .floating-1 {
+      left: 8%;
+      bottom: 110px;
+    }
+
+    .floating-2 {
+      right: 8%;
+      bottom: 100px;
+
+      animation-delay: 1s;
+    }
+
+    .floating-3 {
+      left: 10%;
+      top: 25%;
+
+      font-size: 35px;
+
+      animation-delay: 2s;
+    }
+
+    .floating-4 {
+      right: 10%;
+      top: 35%;
+
+      font-size: 40px;
+
+      animation-delay: 1.5s;
+    }
+
+    @keyframes floating {
+
+      0%,
+      100% {
+        transform: translateY(0);
       }
 
-      .floating-1 {
-        left: 8%;
-        bottom: 110px;
+      50% {
+        transform: translateY(-15px);
       }
+    }
 
-      .floating-2 {
-        right: 8%;
-        bottom: 100px;
-
-        animation-delay: 1s;
-      }
-
-      .floating-3 {
-        left: 10%;
-        top: 25%;
-
-        font-size: 35px;
-
-        animation-delay: 2s;
-      }
-
-      .floating-4 {
-        right: 10%;
-        top: 35%;
-
-        font-size: 40px;
-
-        animation-delay: 1.5s;
-      }
-
-      @keyframes floating {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-
-        50% {
-          transform: translateY(-15px);
-        }
-      }
-
-      /* =====================================================
+    /* =====================================================
    INVITATION
 ===================================================== */
 
-      #invitation {
-        display: none;
-      }
+    #invitation {
+      display: none;
+    }
 
-      /* =====================================================
+    /* =====================================================
    MUSIC BUTTON
 ===================================================== */
 
-      .music-control {
-        position: fixed;
+    .music-control {
+      position: fixed;
 
-        z-index: 999;
+      z-index: 999;
 
-        top: 18px;
-        right: 18px;
+      top: 18px;
+      right: 18px;
 
-        width: 52px;
-        height: 52px;
+      width: 52px;
+      height: 52px;
 
-        border: none;
+      border: none;
 
-        border-radius: 50%;
+      border-radius: 50%;
 
-        background: #ef9139;
+      background: #ef9139;
 
-        color: white;
+      color: white;
 
-        font-size: 22px;
+      font-size: 22px;
 
-        cursor: pointer;
+      cursor: pointer;
 
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 
-        display: none;
+      display: none;
 
-        align-items: center;
-        justify-content: center;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .music-control.playing {
+      animation: musicSpin 4s linear infinite;
+    }
+
+    @keyframes musicSpin {
+      from {
+        transform: rotate(0deg);
       }
 
-      .music-control.playing {
-        animation: musicSpin 4s linear infinite;
+      to {
+        transform: rotate(360deg);
       }
+    }
 
-      @keyframes musicSpin {
-        from {
-          transform: rotate(0deg);
-        }
-
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* =====================================================
+    /* =====================================================
    HERO
 ===================================================== */
 
-      .hero {
-        min-height: 100vh;
+    .hero {
+      min-height: 100vh;
 
-        display: flex;
+      display: flex;
 
-        align-items: center;
-        justify-content: center;
+      align-items: center;
+      justify-content: center;
 
-        text-align: center;
+      text-align: center;
 
-        padding: 90px 20px;
+      padding: 90px 20px;
 
-        background: #fff8df;
+      background: #fff8df;
 
-        position: relative;
-      }
+      position: relative;
+    }
 
-      .hero-content {
-        max-width: 750px;
-      }
+    .hero-content {
+      max-width: 750px;
+    }
 
-      .hero-animals {
-        font-size: 65px;
+    .hero-animals {
+      font-size: 65px;
 
-        margin-bottom: 15px;
-      }
+      margin-bottom: 15px;
+    }
 
-      .hero h1 {
-        font-family: "Fredoka", sans-serif;
+    .hero h1 {
+      font-family: "Fredoka", sans-serif;
 
-        font-size: clamp(45px, 12vw, 80px);
+      font-size: clamp(45px, 12vw, 80px);
 
-        line-height: 0.9;
+      line-height: 0.9;
 
-        color: #e88730;
-      }
+      color: #e88730;
+    }
 
-      .hero h2 {
-        font-family: "Fredoka", sans-serif;
+    .hero h2 {
+      font-family: "Fredoka", sans-serif;
 
-        font-size: clamp(35px, 9vw, 55px);
+      font-size: clamp(35px, 9vw, 55px);
 
-        color: #527b3c;
+      color: #527b3c;
 
-        margin-top: 15px;
-      }
+      margin-top: 15px;
+    }
 
-      .hero p {
-        font-size: 18px;
+    .hero p {
+      font-size: 18px;
 
-        line-height: 1.7;
+      line-height: 1.7;
 
-        color: #766345;
+      color: #766345;
 
-        margin-top: 20px;
-      }
+      margin-top: 20px;
+    }
 
-      /* =====================================================
+    /* =====================================================
    PHOTO HERO FRAME
 ===================================================== */
 
-      .hero-photo-frame {
-        width: min(90%, 420px);
+    .hero-photo-frame {
+      width: min(90%, 420px);
 
-        margin: 35px auto;
+      margin: 35px auto;
 
-        padding: 14px;
+      padding: 14px;
 
-        background: white;
+      background: white;
 
-        border-radius: 30px;
+      border-radius: 30px;
 
-        box-shadow: 0 15px 35px rgba(75, 60, 35, 0.15);
+      box-shadow: 0 15px 35px rgba(75, 60, 35, 0.15);
 
-        position: relative;
+      position: relative;
 
-        transform: rotate(-2deg);
-      }
+      transform: rotate(-2deg);
+    }
 
-      .hero-photo-frame::before {
-        content: "🦁";
+    .hero-photo-frame::before {
+      content: "🦁";
 
-        position: absolute;
+      position: absolute;
 
-        top: -25px;
-        left: -25px;
+      top: -25px;
+      left: -25px;
 
-        font-size: 50px;
+      font-size: 50px;
 
-        z-index: 5;
-      }
+      z-index: 5;
+    }
 
-      .hero-photo-frame::after {
-        content: "🌿";
+    .hero-photo-frame::after {
+      content: "🌿";
 
-        position: absolute;
+      position: absolute;
 
-        right: -25px;
-        bottom: -25px;
+      right: -25px;
+      bottom: -25px;
 
-        font-size: 50px;
+      font-size: 50px;
 
-        z-index: 5;
-      }
+      z-index: 5;
+    }
 
-      .hero-photo {
-        height: 430px;
+    .hero-photo {
+      height: 430px;
 
-        object-fit: cover;
+      object-fit: cover;
 
-        border-radius: 20px;
-      }
+      border-radius: 20px;
+    }
 
-      /* =====================================================
+    /* =====================================================
    PHOTO SECTION
 ===================================================== */
 
-      .photos {
-        background: #dcefbf;
+    .photos {
+      background: #dcefbf;
 
-        padding: 90px 20px;
+      padding: 90px 20px;
 
-        text-align: center;
-      }
+      text-align: center;
+    }
 
-      .photo-heading {
-        margin-bottom: 50px;
-      }
+    .photo-heading {
+      margin-bottom: 50px;
+    }
 
-      /* =====================================================
+    /* =====================================================
    SAFARI PHOTO
 ===================================================== */
 
-      .safari-frame {
-        max-width: 420px;
+    .safari-frame {
+      max-width: 420px;
 
-        margin: 0 auto 70px;
+      margin: 0 auto 70px;
 
-        padding: 18px;
+      padding: 18px;
 
-        background: #8c6239;
+      background: #8c6239;
 
-        border: 10px solid #c99b5b;
+      border: 10px solid #c99b5b;
 
-        border-radius: 25px;
+      border-radius: 25px;
 
-        position: relative;
+      position: relative;
 
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-      }
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
 
-      .safari-frame::before {
-        content: "🌿 🦒 🌿";
+    .safari-frame::before {
+      content: "🌿 🦒 🌿";
 
-        position: absolute;
+      position: absolute;
 
-        top: -48px;
+      top: -48px;
 
-        left: 50%;
+      left: 50%;
 
-        transform: translateX(-50%);
+      transform: translateX(-50%);
 
-        font-size: 30px;
+      font-size: 30px;
 
-        white-space: nowrap;
-      }
+      white-space: nowrap;
+    }
 
-      .safari-frame::after {
-        content: "🐘";
+    .safari-frame::after {
+      content: "🐘";
 
-        position: absolute;
+      position: absolute;
 
-        bottom: -35px;
-        right: -30px;
+      bottom: -35px;
+      right: -30px;
 
-        font-size: 55px;
-      }
+      font-size: 55px;
+    }
 
-      .safari-frame img {
-        height: 450px;
+    .safari-frame img {
+      height: 450px;
 
-        object-fit: cover;
+      object-fit: cover;
 
-        border-radius: 12px;
+      border-radius: 12px;
 
-        border: 5px solid #f3dfb1;
-      }
+      border: 5px solid #f3dfb1;
+    }
 
-      /* =====================================================
+    /* =====================================================
    POLAROID FRAME
 ===================================================== */
 
-      .polaroid-wrapper {
-        display: flex;
+    .polaroid-wrapper {
+      display: flex;
 
-        justify-content: center;
+      justify-content: center;
 
-        margin-bottom: 70px;
-      }
+      margin-bottom: 70px;
+    }
 
-      .polaroid {
-        width: min(85%, 360px);
+    .polaroid {
+      width: min(85%, 360px);
 
-        background: white;
+      background: white;
 
-        padding: 12px 12px 50px;
+      padding: 12px 12px 50px;
 
-        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
 
-        transform: rotate(4deg);
+      transform: rotate(4deg);
 
-        position: relative;
-      }
+      position: relative;
+    }
 
-      .polaroid:nth-child(1) {
-        transform: rotate(-4deg);
-      }
+    .polaroid:nth-child(1) {
+      transform: rotate(-4deg);
+    }
 
-      .polaroid img {
-        height: 330px;
+    .polaroid img {
+      height: 330px;
 
-        object-fit: cover;
-      }
+      object-fit: cover;
+    }
 
-      .polaroid-caption {
-        position: absolute;
+    .polaroid-caption {
+      position: absolute;
 
-        bottom: 12px;
+      bottom: 12px;
 
-        left: 0;
+      left: 0;
 
-        width: 100%;
+      width: 100%;
 
-        text-align: center;
+      text-align: center;
 
-        font-family: "Fredoka", sans-serif;
+      font-family: "Fredoka", sans-serif;
 
-        font-size: 21px;
+      font-size: 21px;
 
-        color: #527b3c;
-      }
+      color: #527b3c;
+    }
 
-      /* =====================================================
+    /* =====================================================
    TWO PHOTO FRAMES
 ===================================================== */
 
-      .two-photos {
-        display: grid;
+    .two-photos {
+      display: grid;
 
-        grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
 
-        gap: 30px;
+      gap: 30px;
 
-        max-width: 700px;
+      max-width: 700px;
 
-        margin: 0 auto 80px;
+      margin: 0 auto 80px;
+    }
+
+    .leaf-frame {
+      background: white;
+
+      padding: 10px;
+
+      border-radius: 25px;
+
+      position: relative;
+
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+      transform: rotate(-2deg);
+    }
+
+    .leaf-frame:nth-child(2) {
+      transform: rotate(3deg);
+    }
+
+    .leaf-frame::before {
+      content: "🌿";
+
+      position: absolute;
+
+      top: -18px;
+      left: -12px;
+
+      font-size: 35px;
+    }
+
+    .leaf-frame::after {
+      content: "🌿";
+
+      position: absolute;
+
+      right: -12px;
+      bottom: -18px;
+
+      font-size: 35px;
+
+      transform: rotate(180deg);
+    }
+
+    .leaf-frame img {
+      height: 280px;
+
+      object-fit: cover;
+
+      border-radius: 18px;
+    }
+
+    /* =====================================================
+   PHOTO GRID
+===================================================== */
+
+    .photo-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 15px;
+
+      max-width: 800px;
+
+      margin: auto;
+    }
+
+    .grid-photo {
+      background: white;
+
+      padding: 7px;
+
+      border-radius: 18px;
+
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+      position: relative;
+    }
+
+    .grid-photo:nth-child(2) {
+      transform: translateY(20px);
+    }
+
+    .grid-photo:nth-child(3) {
+      transform: rotate(2deg);
+    }
+
+    .grid-photo img {
+      height: 230px;
+
+      object-fit: cover;
+
+      border-radius: 12px;
+    }
+
+    /* =====================================================
+   BIRTHDAY NUMBER
+===================================================== */
+
+    .number-section {
+      padding: 90px 20px;
+
+      text-align: center;
+
+      background: #fff8df;
+    }
+
+    .big-number {
+      width: 180px;
+      height: 180px;
+
+      margin: 30px auto;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      background: #f29b3d;
+
+      border-radius: 50%;
+
+      border: 12px solid white;
+
+      box-shadow:
+        0 0 0 8px #78a954,
+        0 15px 30px rgba(0, 0, 0, 0.1);
+
+      font-family: "Fredoka", sans-serif;
+
+      font-size: 120px;
+
+      color: white;
+
+      transform: rotate(-5deg);
+    }
+
+    /* =====================================================
+   DETAILS
+===================================================== */
+
+    .details {
+      background: #fff1bf;
+
+      padding: 90px 20px;
+
+      text-align: center;
+    }
+
+    .info-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 20px;
+
+      margin-top: 40px;
+    }
+
+    .info-card {
+      background: white;
+
+      border-radius: 25px;
+
+      padding: 30px 20px;
+
+      box-shadow: 0 8px 0 rgba(75, 112, 56, 0.12);
+    }
+
+    .info-icon {
+      font-size: 45px;
+
+      line-height: 1;
+
+      height: 48px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      margin-bottom: 10px;
+    }
+
+    .info-card h3 {
+      font-family: "Fredoka", sans-serif;
+
+      font-size: 24px;
+
+      color: #e88730;
+    }
+
+    .info-card p {
+      margin-top: 5px;
+
+      font-size: 17px;
+
+      color: #6d5a3e;
+    }
+
+    /* =====================================================
+   MESSAGE
+===================================================== */
+
+    .message {
+      padding: 90px 20px;
+
+      text-align: center;
+
+      background: #fff8df;
+    }
+
+    .message-box {
+      max-width: 680px;
+
+      margin: 30px auto 0;
+
+      background: white;
+
+      padding: 35px 25px;
+
+      border-radius: 30px;
+
+      box-shadow: 0 10px 30px rgba(91, 67, 35, 0.08);
+    }
+
+    .message-box p {
+      font-size: 18px;
+
+      line-height: 1.8;
+
+      color: #705d40;
+    }
+
+    /* =====================================================
+   RSVP
+===================================================== */
+
+    .rsvp {
+      background: #f5c85b;
+
+      padding: 80px 20px;
+
+      text-align: center;
+    }
+
+    .rsvp h2 {
+      font-family: "Fredoka", sans-serif;
+
+      font-size: 42px;
+
+      color: #4e6637;
+    }
+
+    .rsvp p {
+      margin: 10px auto 25px;
+
+      font-size: 18px;
+    }
+
+    .wa-btn {
+      display: inline-block;
+
+      text-decoration: none;
+
+      background: #4f9c58;
+
+      color: white;
+
+      padding: 14px 30px;
+
+      border-radius: 50px;
+
+      font-size: 18px;
+
+      font-weight: 700;
+
+      box-shadow: 0 6px 0 #39713f;
+
+      transition: 0.2s;
+    }
+
+    .wa-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* =====================================================
+   FOOTER
+===================================================== */
+
+    footer {
+      text-align: center;
+
+      background: #527b3c;
+
+      color: white;
+
+      padding: 30px 20px;
+    }
+
+    footer p {
+      font-size: 16px;
+
+      margin: 4px 0;
+    }
+
+    /* =====================================================
+   MOBILE
+===================================================== */
+
+    @media (max-width: 600px) {
+      .sun {
+        width: 70px;
+        height: 70px;
+
+        top: 25px;
+        right: 20px;
       }
 
-      .leaf-frame {
-        background: white;
+      .grass {
+        height: 100px;
+      }
+
+      .floating {
+        font-size: 35px;
+      }
+
+      .hero {
+        padding: 100px 20px 70px;
+      }
+
+      .hero-animals {
+        font-size: 45px;
+      }
+
+      .hero-photo-frame {
+        width: 90%;
 
         padding: 10px;
-
-        border-radius: 25px;
-
-        position: relative;
-
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-
-        transform: rotate(-2deg);
       }
 
-      .leaf-frame:nth-child(2) {
-        transform: rotate(3deg);
+      .hero-photo {
+        height: 370px;
       }
 
-      .leaf-frame::before {
-        content: "🌿";
+      .safari-frame {
+        width: 90%;
 
-        position: absolute;
+        padding: 12px;
 
-        top: -18px;
-        left: -12px;
-
-        font-size: 35px;
+        border-width: 7px;
       }
 
-      .leaf-frame::after {
-        content: "🌿";
+      .safari-frame img {
+        height: 380px;
+      }
 
-        position: absolute;
+      .two-photos {
+        gap: 15px;
+      }
 
-        right: -12px;
-        bottom: -18px;
+      .leaf-frame img {
+        height: 200px;
+      }
 
-        font-size: 35px;
+      .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-        transform: rotate(180deg);
+      .grid-photo img {
+        height: 180px;
+      }
+
+      .grid-photo:nth-child(3) {
+        transform: translateY(0);
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .music-control {
+        width: 45px;
+        height: 45px;
+
+        top: 15px;
+        right: 15px;
+      }
+    }
+
+    /* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+    @media (max-width: 380px) {
+      .two-photos {
+        grid-template-columns: 1fr;
       }
 
       .leaf-frame img {
         height: 280px;
-
-        object-fit: cover;
-
-        border-radius: 18px;
       }
-
-      /* =====================================================
-   PHOTO GRID
-===================================================== */
 
       .photo-grid {
-        display: grid;
-
-        grid-template-columns: repeat(3, 1fr);
-
-        gap: 15px;
-
-        max-width: 800px;
-
-        margin: auto;
-      }
-
-      .grid-photo {
-        background: white;
-
-        padding: 7px;
-
-        border-radius: 18px;
-
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-
-        position: relative;
-      }
-
-      .grid-photo:nth-child(2) {
-        transform: translateY(20px);
-      }
-
-      .grid-photo:nth-child(3) {
-        transform: rotate(2deg);
+        grid-template-columns: 1fr;
       }
 
       .grid-photo img {
-        height: 230px;
-
-        object-fit: cover;
-
-        border-radius: 12px;
+        height: 280px;
       }
-
-      /* =====================================================
-   BIRTHDAY NUMBER
-===================================================== */
-
-      .number-section {
-        padding: 90px 20px;
-
-        text-align: center;
-
-        background: #fff8df;
-      }
-
-      .big-number {
-        width: 180px;
-        height: 180px;
-
-        margin: 30px auto;
-
-        display: flex;
-
-        justify-content: center;
-        align-items: center;
-
-        background: #f29b3d;
-
-        border-radius: 50%;
-
-        border: 12px solid white;
-
-        box-shadow:
-          0 0 0 8px #78a954,
-          0 15px 30px rgba(0, 0, 0, 0.1);
-
-        font-family: "Fredoka", sans-serif;
-
-        font-size: 120px;
-
-        color: white;
-
-        transform: rotate(-5deg);
-      }
-
-      /* =====================================================
-   DETAILS
-===================================================== */
-
-      .details {
-        background: #fff1bf;
-
-        padding: 90px 20px;
-
-        text-align: center;
-      }
-
-      .info-grid {
-        display: grid;
-
-        grid-template-columns: repeat(2, 1fr);
-
-        gap: 20px;
-
-        margin-top: 40px;
-      }
-
-      .info-card {
-        background: white;
-
-        border-radius: 25px;
-
-        padding: 30px 20px;
-
-        box-shadow: 0 8px 0 rgba(75, 112, 56, 0.12);
-      }
-
-      .info-icon {
-        font-size: 45px;
-
-        margin-bottom: 10px;
-      }
-
-      .info-card h3 {
-        font-family: "Fredoka", sans-serif;
-
-        font-size: 24px;
-
-        color: #e88730;
-      }
-
-      .info-card p {
-        margin-top: 5px;
-
-        font-size: 17px;
-
-        color: #6d5a3e;
-      }
-
-      /* =====================================================
-   MESSAGE
-===================================================== */
-
-      .message {
-        padding: 90px 20px;
-
-        text-align: center;
-
-        background: #fff8df;
-      }
-
-      .message-box {
-        max-width: 680px;
-
-        margin: 30px auto 0;
-
-        background: white;
-
-        padding: 35px 25px;
-
-        border-radius: 30px;
-
-        box-shadow: 0 10px 30px rgba(91, 67, 35, 0.08);
-      }
-
-      .message-box p {
-        font-size: 18px;
-
-        line-height: 1.8;
-
-        color: #705d40;
-      }
-
-      /* =====================================================
-   RSVP
-===================================================== */
-
-      .rsvp {
-        background: #f5c85b;
-
-        padding: 80px 20px;
-
-        text-align: center;
-      }
-
-      .rsvp h2 {
-        font-family: "Fredoka", sans-serif;
-
-        font-size: 42px;
-
-        color: #4e6637;
-      }
-
-      .rsvp p {
-        margin: 10px auto 25px;
-
-        font-size: 18px;
-      }
-
-      .wa-btn {
-        display: inline-block;
-
-        text-decoration: none;
-
-        background: #4f9c58;
-
-        color: white;
-
-        padding: 14px 30px;
-
-        border-radius: 50px;
-
-        font-size: 18px;
-
-        font-weight: 700;
-
-        box-shadow: 0 6px 0 #39713f;
-
-        transition: 0.2s;
-      }
-
-      .wa-btn:hover {
-        transform: translateY(-3px);
-      }
-
-      /* =====================================================
-   FOOTER
-===================================================== */
-
-      footer {
-        text-align: center;
-
-        background: #527b3c;
-
-        color: white;
-
-        padding: 30px 20px;
-      }
-
-      footer p {
-        font-size: 16px;
-
-        margin: 4px 0;
-      }
-
-      /* =====================================================
-   MOBILE
-===================================================== */
-
-      @media (max-width: 600px) {
-        .sun {
-          width: 70px;
-          height: 70px;
-
-          top: 25px;
-          right: 20px;
-        }
-
-        .grass {
-          height: 100px;
-        }
-
-        .floating {
-          font-size: 35px;
-        }
-
-        .hero {
-          padding: 100px 20px 70px;
-        }
-
-        .hero-animals {
-          font-size: 45px;
-        }
-
-        .hero-photo-frame {
-          width: 90%;
-
-          padding: 10px;
-        }
-
-        .hero-photo {
-          height: 370px;
-        }
-
-        .safari-frame {
-          width: 90%;
-
-          padding: 12px;
-
-          border-width: 7px;
-        }
-
-        .safari-frame img {
-          height: 380px;
-        }
-
-        .two-photos {
-          gap: 15px;
-        }
-
-        .leaf-frame img {
-          height: 200px;
-        }
-
-        .photo-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .grid-photo img {
-          height: 180px;
-        }
-
-        .grid-photo:nth-child(3) {
-          transform: translateY(0);
-        }
-
-        .info-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .music-control {
-          width: 45px;
-          height: 45px;
-
-          top: 15px;
-          right: 15px;
-        }
-      }
-
-      /* =====================================================
-   VERY SMALL MOBILE
-===================================================== */
-
-      @media (max-width: 380px) {
-        .two-photos {
-          grid-template-columns: 1fr;
-        }
-
-        .leaf-frame img {
-          height: 280px;
-        }
-
-        .photo-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .grid-photo img {
-          height: 280px;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <!-- =====================================================
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =====================================================
      AUDIO
 ===================================================== -->
 
-    <audio id="birthdayMusic" loop>
-      <source src="pesta ceria.mp3" type="audio/mpeg" />
-    </audio>
+  <audio id="birthdayMusic" loop>
+    <source src="pesta ceria.mp3" type="audio/mpeg" />
+  </audio>
 
-    <!-- =====================================================
+  <!-- =====================================================
      MUSIC BUTTON
 ===================================================== -->
 
-    <button id="musicButton" class="music-control" onclick="toggleMusic()">
-      🎵
-    </button>
+  <button id="musicButton" class="music-control" onclick="toggleMusic()">
+    🎵
+  </button>
 
-    <!-- =====================================================
+  <!-- =====================================================
      OPENING
 ===================================================== -->
 
-    <section id="opening">
-      <div class="sun"></div>
+  <section id="opening">
+    <div class="sun"></div>
 
-      <div class="cloud cloud-1"></div>
-      <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
 
-      <div class="floating floating-3">🦋</div>
+    <div class="floating floating-3">🦋</div>
 
-      <div class="floating floating-4">🐦</div>
+    <div class="floating floating-4">🐦</div>
 
-      <div class="opening-content">
-        <div class="small-text">YOU ARE INVITED TO</div>
+    <div class="opening-content">
+      <div class="small-text">YOU ARE INVITED TO</div>
 
-        <h1 class="opening-title">
-          ZOO<br />
+      <h1 class="opening-title">
+        ZOO<br />
 
-          <span class="number"> 2 </span>
+        <span class="number"> 2 </span>
 
-          ADVENTURE
-        </h1>
+        ADVENTURE
+      </h1>
 
-        <div class="main-animal">🦁</div>
+      <div class="main-animal">🦁</div>
 
-        <div class="opening-date">Birthday Celebration</div>
+      <div class="opening-date">Birthday Celebration</div>
 
-        <button class="open-btn" onclick="openInvitation()">
-          💌 Buka Undangan
-        </button>
-      </div>
+      <button class="open-btn" onclick="openInvitation()">
+        💌 Buka Undangan
+      </button>
+    </div>
 
-      <div class="floating floating-1">🐘</div>
+    <div class="floating floating-1">🐘</div>
 
-      <div class="floating floating-2">🦒</div>
+    <div class="floating floating-2">🦒</div>
 
-      <div class="grass"></div>
-    </section>
+    <div class="grass"></div>
+  </section>
 
-    <!-- =====================================================
+  <!-- =====================================================
      INVITATION
 ===================================================== -->
 
-    <main id="invitation">
-      <!-- =====================================================
+  <main id="invitation">
+    <!-- =====================================================
      HERO
 ===================================================== -->
 
-      <section class="hero">
-        <div class="hero-content">
-          <div class="hero-animals">🦁 🐒 🦒</div>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-animals">🦁 🐒 🦒</div>
 
-          <h1>Happy Birthday!</h1>
+        <h1>Happy Birthday!</h1>
 
-          <h2>GISELLA EMILIA</h2>
+        <h2>GISELLA EMILIA</h2>
 
-          <!-- FOTO UTAMA -->
+        <!-- FOTO UTAMA -->
 
-          <div class="hero-photo-frame">
-            <img
-              src="img/foto-utama.jpeg"
-              alt="Foto GISELLA EMILIA"
-              class="hero-photo"
-            />
-          </div>
-
-          <p>
-            Dua tahun penuh tawa, cerita, dan petualangan kecil yang begitu
-            menyenangkan! 🎈
-          </p>
-
-          <p>
-            Dengan penuh kebahagiaan, kami mengundang keluarga dan sahabat untuk
-            merayakan ulang tahun ke-2
-
-            <strong> GISELLA EMILIA </strong>.
-          </p>
+        <div class="hero-photo-frame">
+          <img src="img/foto-utama.jpeg" alt="Foto GISELLA EMILIA" class="hero-photo" />
         </div>
-      </section>
 
-      <!-- =====================================================
+        <p>
+          Dua tahun penuh tawa, cerita, dan petualangan kecil yang begitu
+          menyenangkan! 🎈
+        </p>
+
+        <p>
+          Dengan penuh kebahagiaan, kami mengundang keluarga dan sahabat untuk
+          merayakan ulang tahun ke-2
+
+          <strong> GISELLA EMILIA </strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================
      PHOTO SECTION
 ===================================================== -->
 
-      <section class="photos">
-        <div class="container">
-          <div class="photo-heading">
-            <h2 class="section-title">📸 Little Explorer</h2>
+    <section class="photos">
+      <div class="container">
+        <div class="photo-heading">
+          <h2 class="section-title">📸 Little Explorer</h2>
 
-            <p class="section-subtitle">
-              Beberapa momen kecil yang penuh kebahagiaan 🦒
-            </p>
-          </div>
+          <p class="section-subtitle">
+            Beberapa momen kecil yang penuh kebahagiaan 🦒
+          </p>
+        </div>
 
-          <!-- =============================================
+        <!-- =============================================
              FRAME 1
         ============================================== -->
 
-          <div class="safari-frame">
-            <img src="img/foto-1.jpeg" alt="Foto anak" />
-          </div>
+        <div class="safari-frame">
+          <img src="img/foto-1.jpeg" alt="Foto anak" />
+        </div>
 
-          <!-- =============================================
+        <!-- =============================================
              FRAME 2 POLAROID
         ============================================== -->
 
-          <div class="polaroid-wrapper">
-            <div class="polaroid">
-              <img src="img/foto-2.jpeg" alt="Foto anak" />
+        <div class="polaroid-wrapper">
+          <div class="polaroid">
+            <img src="img/foto-2.jpeg" alt="Foto anak" />
 
-              <div class="polaroid-caption">Little Explorer 🐘</div>
-            </div>
+            <div class="polaroid-caption">Little Explorer 🐘</div>
           </div>
+        </div>
 
-          <!-- =============================================
+        <!-- =============================================
              FRAME 3 & 4
         ============================================== -->
 
-          <div class="two-photos">
-            <div class="leaf-frame">
-              <img src="img/foto-3.jpeg" alt="Foto anak" />
-            </div>
-
-            <div class="leaf-frame">
-              <img src="img/foto-4.jpeg" alt="Foto anak" />
-            </div>
+        <div class="two-photos">
+          <div class="leaf-frame">
+            <img src="img/foto-3.jpeg" alt="Foto anak" />
           </div>
 
-          <!-- =============================================
+          <div class="leaf-frame">
+            <img src="img/foto-4.jpeg" alt="Foto anak" />
+          </div>
+        </div>
+
+        <!-- =============================================
              FRAME 5, 6 & 7
         ============================================== -->
 
-          <div class="photo-grid">
-            <div class="grid-photo">
-              <img src="img/foto-5.jpeg" alt="Foto anak" />
-            </div>
+        <div class="photo-grid">
+          <div class="grid-photo">
+            <img src="img/foto-5.jpeg" alt="Foto anak" />
+          </div>
 
-            <div class="grid-photo">
-              <img src="img/foto-7.jpeg" alt="Foto anak" />
-            </div>
+          <div class="grid-photo">
+            <img src="img/foto-7.jpeg" alt="Foto anak" />
+          </div>
 
-            <div class="grid-photo">
-              <img src="img/foto-8.jpeg" alt="Foto anak" />
-            </div>
+          <div class="grid-photo">
+            <img src="img/foto-8.jpeg" alt="Foto anak" />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- =====================================================
+    <!-- =====================================================
      AGE
 ===================================================== -->
 
-      <section class="number-section">
-        <div class="container">
-          <h2 class="section-title">Today I Am...</h2>
+    <section class="number-section">
+      <div class="container">
+        <h2 class="section-title">Today I Am...</h2>
 
-          <div class="big-number">2</div>
+        <div class="big-number">2</div>
 
-          <h2 class="section-title">YEARS OLD! 🎂</h2>
-        </div>
-      </section>
+        <h2 class="section-title">YEARS OLD! 🎂</h2>
+      </div>
+    </section>
 
-      <!-- =====================================================
+    <!-- =====================================================
      DETAILS
 ===================================================== -->
 
-      <section class="details">
-        <div class="container">
-          <h2 class="section-title">🐾 Zoo Adventure</h2>
+    <section class="details">
+      <div class="container">
+        <h2 class="section-title">🐾 Zoo Adventure</h2>
 
-          <p class="section-subtitle">Yuk ikut petualangan seru bersama!</p>
+        <p class="section-subtitle">Yuk ikut petualangan seru bersama!</p>
 
-          <div class="info-grid">
-            <div class="info-card">
-              <div class="info-icon">📅</div>
-
-              <h3>Hari & Tanggal</h3>
-
-              <p>Sabtu, 22 Agustus 2026</p>
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-icon">
+              <!-- Calendar Vector Icon showing date 22 -->
+              <svg width="45" height="45" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="8" width="38" height="36" rx="8" fill="#FFFFFF" stroke="#E88730" stroke-width="3" />
+                <path d="M5 16C5 11.5817 8.58172 8 13 8H35C39.4183 8 43 11.5817 43 16V19H5V16Z" fill="#EF9139" />
+                <rect x="13" y="3" width="4" height="9" rx="2" fill="#527B3C" />
+                <rect x="31" y="3" width="4" height="9" rx="2" fill="#527B3C" />
+                <text x="24" y="37" font-family="'Fredoka', sans-serif" font-size="21" font-weight="700" fill="#527B3C"
+                  text-anchor="middle">22</text>
+              </svg>
             </div>
 
-            <div class="info-card">
-              <div class="info-icon">⏰</div>
+            <h3>Hari & Tanggal</h3>
 
-              <h3>Waktu</h3>
+            <p>Sabtu, 22 Agustus 2026</p>
+          </div>
 
-              <p>
-                15.00 WITA<br />
+          <div class="info-card">
+            <div class="info-icon">⏰</div>
 
-                sampai selesai
-              </p>
-            </div>
+            <h3>Waktu</h3>
 
-            <div class="info-card">
-              <div class="info-icon">📍</div>
+            <p>
+              15.00 WITA<br />
 
-              <h3>Lokasi</h3>
+              sampai selesai
+            </p>
+          </div>
 
-              <p>
-                Hantaleya cafe<br />
+          <div class="info-card">
+            <div class="info-icon">📍</div>
 
-                Jln. Samsu Biya, Kayubulan, Limboto.
-              </p>
-            </div>
+            <h3>Lokasi</h3>
 
-            <div class="info-card">
-              <div class="info-icon">🎂</div>
+            <p>
+              Hantaleya cafe<br />
 
-              <h3>Birthday</h3>
+              Jln. Samsu Biya, Kayubulan, Limboto.
+            </p>
+          </div>
 
-              <p>
-                GISELLA EMILIA<br />
+          <div class="info-card">
+            <div class="info-icon">🎂</div>
 
-                Turns TWO!
-              </p>
-            </div>
+            <h3>Birthday</h3>
+
+            <p>
+              GISELLA EMILIA<br />
+
+              Turns TWO!
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- =====================================================
+    <!-- =====================================================
      MESSAGE
 ===================================================== -->
 
-      <section class="message">
-        <div class="container">
-          <h2 class="section-title">🌿 A Little Message</h2>
+    <section class="message">
+      <div class="container">
+        <h2 class="section-title">🌿 A Little Message</h2>
 
-          <div class="message-box">
-            <p>
-              Tidak terasa sudah dua tahun sejak hadirnya buah hati kecil kami
-              yang membawa begitu banyak kebahagiaan.
-            </p>
+        <div class="message-box">
+          <p>
+            Tidak terasa sudah dua tahun sejak hadirnya buah hati kecil kami
+            yang membawa begitu banyak kebahagiaan.
+          </p>
 
-            <br />
+          <br />
 
-            <p>
-              Kami akan sangat bahagia apabila Ayah, Bunda, Kakak, Om, Tante,
-              dan teman-teman dapat hadir untuk bermain dan merayakan hari
-              spesial ini bersama
+          <p>
+            Kami akan sangat bahagia apabila Ayah, Bunda, Kakak, Om, Tante,
+            dan teman-teman dapat hadir untuk bermain dan merayakan hari
+            spesial ini bersama
 
-              <strong> GISELLA EMILIA </strong>.
-            </p>
+            <strong> GISELLA EMILIA </strong>.
+          </p>
 
-            <br />
+          <br />
 
-            <p>🦁 🦒 🐘 See you at the Zoo! 🐘 🦒 🦁</p>
-          </div>
+          <p>🦁 🦒 🐘 See you at the Zoo! 🐘 🦒 🦁</p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- =====================================================
+    <!-- =====================================================
      RSVP
 ===================================================== -->
 
-      <section class="rsvp">
-        <div class="container">
-          <h2>Will You Join Us? 🐾</h2>
+    <section class="rsvp">
+      <div class="container">
+        <h2>Will You Join Us? 🐾</h2>
 
-          <p>Konfirmasi kehadiran melalui WhatsApp</p>
+        <p>Konfirmasi kehadiran melalui WhatsApp</p>
 
-          <a
-            href="https://wa.me/628120000000?text=Halo,%20saya%20akan%20hadir%20di%20ulang%20tahun."
-            target="_blank"
-            class="wa-btn"
-          >
-            💬 Konfirmasi Kehadiran
-          </a>
-        </div>
-      </section>
+        <a href="https://wa.me/628120000000?text=Halo,%20saya%20akan%20hadir%20di%20ulang%20tahun." target="_blank"
+          class="wa-btn">
+          💬 Konfirmasi Kehadiran
+        </a>
+      </div>
+    </section>
 
-      <!-- =====================================================
+    <!-- =====================================================
      FOOTER
 ===================================================== -->
 
-      <footer>
-        <p>Made with ❤️ for GISELLA EMILIA</p>
+    <footer>
+      <p>Made with ❤️ for GISELLA EMILIA</p>
 
-        <p>🦁 🐘 🦒 🐒</p>
-      </footer>
-    </main>
+      <p>🦁 🐘 🦒 🐒</p>
+    </footer>
+  </main>
 
-    <script>
-      /* =====================================================
-   ELEMENT
+  <script>
+    /* =====================================================
+ ELEMENT
 ===================================================== */
 
-      const opening = document.getElementById("opening");
+    const opening = document.getElementById("opening");
 
-      const invitation = document.getElementById("invitation");
+    const invitation = document.getElementById("invitation");
 
-      const music = document.getElementById("birthdayMusic");
+    const music = document.getElementById("birthdayMusic");
 
-      const musicButton = document.getElementById("musicButton");
+    const musicButton = document.getElementById("musicButton");
 
-      /* =====================================================
-   OPEN INVITATION
+    /* =====================================================
+ OPEN INVITATION
 ===================================================== */
 
-      function openInvitation() {
-        opening.style.display = "none";
+    function openInvitation() {
+      opening.style.display = "none";
 
-        invitation.style.display = "block";
+      invitation.style.display = "block";
 
-        musicButton.style.display = "flex";
+      musicButton.style.display = "flex";
 
-        music
-          .play()
-          .then(() => {
-            musicButton.classList.add("playing");
-
-            musicButton.innerHTML = "🎵";
-          })
-          .catch(() => {
-            console.log("Music autoplay diblokir browser.");
-          });
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }
-
-      /* =====================================================
-   MUSIC
-===================================================== */
-
-      function toggleMusic() {
-        if (music.paused) {
-          music.play();
+      music
+        .play()
+        .then(() => {
+          musicButton.classList.add("playing");
 
           musicButton.innerHTML = "🎵";
+        })
+        .catch(() => {
+          console.log("Music autoplay diblokir browser.");
+        });
 
-          musicButton.classList.add("playing");
-        } else {
-          music.pause();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
 
-          musicButton.innerHTML = "🔇";
-
-          musicButton.classList.remove("playing");
-        }
-      }
-
-      /* =====================================================
-   IMAGE ERROR HANDLER
-   Jika foto belum tersedia,
-   frame tetap terlihat.
+    /* =====================================================
+ MUSIC
 ===================================================== */
 
-      document.querySelectorAll("img").forEach((img) => {
-        img.addEventListener("error", function () {
-          this.style.background = "#e8d8ae";
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
 
-          this.style.objectFit = "cover";
-        });
+        musicButton.innerHTML = "🎵";
+
+        musicButton.classList.add("playing");
+      } else {
+        music.pause();
+
+        musicButton.innerHTML = "🔇";
+
+        musicButton.classList.remove("playing");
+      }
+    }
+
+    /* =====================================================
+ IMAGE ERROR HANDLER
+ Jika foto belum tersedia,
+ frame tetap terlihat.
+===================================================== */
+
+    document.querySelectorAll("img").forEach((img) => {
+      img.addEventListener("error", function () {
+        this.style.background = "#e8d8ae";
+
+        this.style.objectFit = "cover";
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>
